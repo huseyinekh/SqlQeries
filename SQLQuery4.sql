@@ -1,61 +1,39 @@
-SELECT Firstname from Employees where EmployeeID>5
-SELECT EmployeeID, Firstname,LastName,BirthDate from Employees where YEAR(BirthDate) =1960
-SELECT EmployeeID, Firstname,LastName,BirthDate from Employees where  YEAR(BirthDate) <1965  and YEAR(BirthDate)>1950
-
-SELECT EmployeeID, Firstname,LastName,Title,Address,Country, BirthDate from Employees where  Country='UK' And TitleOfCourtesy='Ms.'
-
-SELECT EmployeeID, Firstname,LastName,Title,Address,Country, BirthDate from Employees where TitleOfCourtesy='Mr.'or  Year(Getdate()) -Year(BirthDate)>60;
-
-select * from Employees  order by TitleOfCourtesy asc ,BirthDate desc
-
-select * from Employees 
-where FirstName between 'Janet' and 'Robert' order by 3
-select  FirstName, [year_] =year(BirthDate)from  Employees where Year(BirthDate) In(1950,1955,1960)
-
-select COUNT(EmployeeID) from Employees
-Order by EmployeeID
-
-SELECT * from Employees where  SUBSTRING(FirstName,1,1)='A' 
-
-SELEct * from Employees where LastName Like '%N'
-
-Select* from Employees where FirstName like'%e%'
-
-SELEct * from Employees where FirstName Like  'A%' or FirstName  Like 'L%'
-SELEct * from Employees where FirstName  Like '%[RT]%'
-
-SELEct * from Employees where FirstName  between 'j' and 'r' order by FirstName
 
 
-SELEct * from Employees where FirstName  Like '%[J-R]%' order by FirstName
-
-
-
---1
+--HOME TASK START
+--1)-- Adı şu şekilde olanlar: tAmEr, yAsEmin, tAnEr (A ile E arasında tek bir karakter olanlar)
 SELEct * from Employees where FirstName  Like '%A_E%' order by FirstName
 
---2
+--2)-- Adının içerisinde A ile E arasında iki tane karakter olanlar
 Select * from Employees where FirstName Like '%A__E%'
 
---3
-Select * from Employees where FirstName not Like 'E%'
+--3)-- Adının ilk harfi M olmayanlar
+Select * from Employees where FirstName not Like 'M%'
 
---4
+--4)-- Adı T ile bitmeyenler
 Select * from Employees where FirstName not Like 'T%'
 
---5
+--5)-- Adının 2. harfi A veya T olmayanlar
 Select * from Employees where FirstName not Like '_A%' OR FirstName not Like '_T%'
 Select * from Employees where FirstName not Like '_[AT]%'
 
 
---6
+--6) Adının ilk iki harfi LA, LN, AA veya AN olanlar
 Select *from Employees where FirstName Like 'LA%' or  FirstName Like 'LN%'or  FirstName Like 'AA%'or  FirstName Like 'LB%'
 
---7
+--7)Adının içerisinde _ geçen isimleri listeleyiniz ( içeride kayıt yok diye yazmamazlık yapmayınız, bi zahmet 2 satır datayı güncelleyin :))
 Select * from Employees
 WHERE FirstName LIKE '%\_%' ESCAPE '\'
 
+--8)Adının ilk harfi A ile I aralığında bulunmayanlar
+SELECT * FROM Employees where
+FirstName  Not  BETWEEN 'A' AND 'I'
+
+-----HOME TASK END
 --_____________________________________________________________________
+
+
+-----------CLASSROOM Task Start---------
 
 Create database MyWindRNET101
 GO
@@ -163,4 +141,30 @@ Select Name ,COUNT(ProductId) as ProductCount from( Sales
 inner join Product on Sales.ProductId=Product.id)
 where Month(SalesDate) Like Month(GetDate()) 
 group by Product.Name
+-----------CLASSROOM Task END---------
+
+----------------EXAMPLESS-----------
+SELECT Firstname from Employees where EmployeeID>5
+SELECT EmployeeID, Firstname,LastName,BirthDate from Employees where YEAR(BirthDate) =1960
+SELECT EmployeeID, Firstname,LastName,BirthDate from Employees where  YEAR(BirthDate) <1965  and YEAR(BirthDate)>1950
+
+SELECT EmployeeID, Firstname,LastName,Title,Address,Country, BirthDate from Employees where  Country='UK' And TitleOfCourtesy='Ms.'
+
+SELECT EmployeeID, Firstname,LastName,Title,Address,Country, BirthDate from Employees where TitleOfCourtesy='Mr.'or  Year(Getdate()) -Year(BirthDate)>60;
+
+select * from Employees  order by TitleOfCourtesy asc ,BirthDate desc
+select * from Employees 
+where FirstName between 'Janet' and 'Robert' order by 3
+select  FirstName, [year_] =year(BirthDate)from  Employees where Year(BirthDate) In(1950,1955,1960)
+select COUNT(EmployeeID) from Employees
+Order by EmployeeID
+SELECT * from Employees where  SUBSTRING(FirstName,1,1)='A' 
+SELEct * from Employees where LastName Like '%N'
+Select* from Employees where FirstName like'%e%'
+SELEct * from Employees where FirstName Like  'A%' or FirstName  Like 'L%'
+SELEct * from Employees where FirstName  Like '%[RT]%'
+SELEct * from Employees where FirstName  between 'j' and 'r' order by FirstName
+SELEct * from Employees where FirstName  Like '%[J-R]%' order by FirstName
+
+
 
