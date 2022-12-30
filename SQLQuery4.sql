@@ -21,6 +21,9 @@ Select * from Employees where FirstName not Like '_[AT]%'
 --6) Adının ilk iki harfi LA, LN, AA veya AN olanlar
 Select *from Employees where FirstName Like 'LA%' or  FirstName Like 'LN%'or  FirstName Like 'AA%'or  FirstName Like 'LB%'
 
+select * from Employees
+where FirstName LIKE '[LA][AN]%'
+
 --7)Adının içerisinde _ geçen isimleri listeleyiniz ( içeride kayıt yok diye yazmamazlık yapmayınız, bi zahmet 2 satır datayı güncelleyin :))
 Select * from Employees
 WHERE FirstName LIKE '%\_%' ESCAPE '\'
